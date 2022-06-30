@@ -40,35 +40,46 @@ def display():
         count+=1
 
 
+#main window
 window=Tk()
 window.geometry("500x450")
 window.title("TODO Schedule Planner")
 window.config(bg='#223441')
 
+#create Frame which contain all other components
 frame=Frame(window)
 frame.pack(pady=10)
 
+#create a listbox 
 lb=Listbox(frame,width=25,height=8,font=('Times',18),bd=0,fg='#464646')
 lb.pack(side=LEFT,fill=BOTH)
 
+#create a scroll bar
 sb=Scrollbar(frame)
 sb.pack(side=RIGHT,fill=BOTH)
 
+#connect scroll bar in listbox
 lb.config(yscrollcommand=sb.set)
 sb.config(command=lb.yview)
 
+#use to take input from the user
 task=Entry(window,font=('times',18))
 task.pack(pady=20)
+
+#show all task on the listbox 
 display()
 
+#create a button frame 
 bframe=Frame(window)
 bframe.pack(pady=5)
 
+#add button to add task
 abutton=Button(bframe,text="Add",font=('times',14),command=add)
 abutton.pack(fill=BOTH,side=LEFT)
 
+#delete button to delete task
 bbutton=Button(bframe,text="Delete",font=('times',14),command=delete_task)
 bbutton.pack(fill=BOTH,side=RIGHT)
 
-
+#used to display the application
 window.mainloop()
